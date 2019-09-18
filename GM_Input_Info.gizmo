@@ -2,8 +2,6 @@ Group {
  name GM_Input_Info
  tile_color 0xff9455ff
  selected true
- xpos -590
- ypos -394
  addUserKnob {20 User}
  addUserKnob {6 shotname l "Shot Name" +STARTLINE}
  shotname true
@@ -70,7 +68,7 @@ Group {
 }
  Input {
   inputs 0
-  name Input1
+  name Input
   xpos 180
   ypos -754
  }
@@ -550,7 +548,7 @@ push $N7433b00
   font_size_values {{0 100 1 100 2 100 3 100 4 100 5 100 6 100 7 100 8 100 9 100 10 100 0 {curve x1018 114} 1 114 2 110 3 110 4 110 5 110 6 110 7 110 8 110 9 110 10 110}
     }
   global_font_scale {{parent.fontsize/100}}
-  center {1920 1080}
+  scale {1 1}
   cursor_initialised true
   autofit_bbox false
   initial_cursor_position {{65.60009766 299.2997437}
