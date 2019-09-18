@@ -477,7 +477,6 @@ push $N7601af0
   shadow_opacity 0.8
   shadow_angle 317
   name version
-  selected true
   xpos 1280
   ypos -442
   disable {{parent.versio==0}}
@@ -635,10 +634,10 @@ push $N774cc80
   translate {{"sin(\[value angle]*3.14159265/180)*\[value distance]"} {"-1*cos(\[value angle]*3.14159265/180)*\[value distance]"}}
   center {960 540}
   name Transform_shadow
+  selected true
   xpos 1280
   ypos 110
  }
-set N9680d680 [stack 0]
  Blur {
   size 2
   name Blur_shadow
@@ -791,13 +790,5 @@ push $N7060e80
   addUserKnob {20 User}
   addUserKnob {7 gap l Gap R -200 200}
   gap {{-parent.spacing}}
- }
-push $N9680d680
- Viewer {
-  frame_range 1001-1118
-  viewerProcess "None (default)"
-  name Viewer1
-  xpos 1720
-  ypos 494
  }
 end_group
