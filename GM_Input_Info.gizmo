@@ -2,6 +2,8 @@ Group {
  name GM_Input_Info
  tile_color 0xff9455ff
  selected true
+ xpos -590
+ ypos -394
  addUserKnob {20 User}
  addUserKnob {6 shotname l "Shot Name" +STARTLINE}
  shotname true
@@ -25,9 +27,9 @@ Group {
  format_name true
  addUserKnob {6 colorspace l Colorspace +STARTLINE}
  colorspace true
- addUserKnob {26 "" +STARTLINE}
- addUserKnob {22 selectnone l "Select None" T "import nuke\n\nthisNode = nuke.thisNode()\n\nthisNode.knob(\"shotname\").setValue(0)\nthisNode.knob(\"framerange\").setValue(0)\nthisNode.knob(\"versio\").setValue(0)\nthisNode.knob(\"filename\").setValue(0)\nthisNode.knob(\"fileextension\").setValue(0)\nthisNode.knob(\"inputtc\").setValue(0)\nthisNode.knob(\"frame\").setValue(0)\nthisNode.knob(\"format\").setValue(0)\nthisNode.knob(\"format_name\").setValue(0)\nthisNode.knob(\"colorspace\").setValue(0)" +STARTLINE}
- addUserKnob {22 selectall l "Select All" -STARTLINE T "import nuke\n\nthisNode = nuke.thisNode()\n\nthisNode.knob(\"shotname\").setValue(1)\nthisNode.knob(\"framerange\").setValue(1)\nthisNode.knob(\"versio\").setValue(1)\nthisNode.knob(\"filename\").setValue(1)\nthisNode.knob(\"fileextension\").setValue(1)\nthisNode.knob(\"inputtc\").setValue(1)\nthisNode.knob(\"frame\").setValue(1)\nthisNode.knob(\"format\").setValue(1)\nthisNode.knob(\"format_name\").setValue(1)\nthisNode.knob(\"colorspace\").setValue(1)"}
+ addUserKnob {26 ""}
+ addUserKnob {22 selectnone l "Select None" T "import nuke\n\nknobs = \['shotname','framerange','versio','filename','fileextension','inputtc','frame','format','format_name','colorspace']\n\nfor knob in knobs:\n    nuke.thisNode()\[knob].setValue(False)\n" +STARTLINE}
+ addUserKnob {22 selectall l "Select All" -STARTLINE T "import nuke\n\nknobs = \['shotname','framerange','versio','filename','fileextension','inputtc','frame','format','format_name','colorspace']\n\nfor knob in knobs:\n    nuke.thisNode()\[knob].setValue(True)\n"}
  addUserKnob {26 ""}
  addUserKnob {6 text_only l "Show Only text" +STARTLINE}
  addUserKnob {6 no_alpha l "No Alpha" +STARTLINE}
@@ -77,20 +79,20 @@ Group {
   xpos 214
   ypos -606
  }
-set N7472d40 [stack 0]
+set N57744f0 [stack 0]
  Crop {
   box {{input.format.x} {input.format.y} {input.format.r} {input.format.t}}
   name Crop_proxy
   xpos 1060
   ypos -610
  }
-push $N7472d40
+push $N57744f0
  Dot {
   name Dot1
   xpos 214
   ypos -486
  }
-set N7384410 [stack 0]
+set N584d0d0 [stack 0]
  Shuffle {
   red black
   green black
@@ -101,61 +103,61 @@ set N7384410 [stack 0]
   xpos 400
   ypos -496
  }
-set N96d82b40 [stack 0]
+set N53fd5e0 [stack 0]
  Dot {
   name Dot2
   xpos 874
   ypos -486
  }
-set N7433b00 [stack 0]
+set N5777770 [stack 0]
  Dot {
   name Dot3
   xpos 1094
   ypos -486
  }
-set N742b1c0 [stack 0]
+set N5aca2c0 [stack 0]
  Dot {
   name Dot4
   xpos 1314
   ypos -486
  }
-set N7601af0 [stack 0]
+set N5ac83b0 [stack 0]
  Dot {
   name Dot9
   xpos 1534
   ypos -486
  }
-set N7397790 [stack 0]
+set N57874e0 [stack 0]
  Dot {
   name Dot7
   xpos 1754
   ypos -486
  }
-set N7420a00 [stack 0]
+set N58e63c0 [stack 0]
  Dot {
   name Dot5
   xpos 1974
   ypos -486
  }
-set N75f0d90 [stack 0]
+set N57809a0 [stack 0]
  Dot {
   name Dot6
   xpos 2194
   ypos -486
  }
-set N75540c0 [stack 0]
+set N57796b0 [stack 0]
  Dot {
   name Dot14
   xpos 2414
   ypos -486
  }
-set N6f771e0 [stack 0]
+set N53fa080 [stack 0]
  Dot {
   name Dot15
   xpos 2634
   ypos -486
  }
-set N6fabc80 [stack 0]
+set N5a83590 [stack 0]
  Dot {
   name Dot16
   xpos 2854
@@ -166,9 +168,7 @@ set N6fabc80 [stack 0]
   font_width_toolbar 100
   font_height_toolbar 100
   message "Colorspace:  \[split \[knob \[topnode parent.input0].colorspace] ]"
-  old_message {{67 111 108 111 114 115 112 97 99 101 58 32 32 100 101 102 97 117 108 116 32 40 108 105 110 101 97 114 41}
-    }
-  old_expression_markers {{13 28}
+  old_message {{67 111 108 111 114 115 112 97 99 101 58 32 32 91 115 112 108 105 116 32 91 107 110 111 98 32 91 116 111 112 110 111 100 101 32 112 97 114 101 110 116 46 105 110 112 117 116 48 93 46 99 111 108 111 114 115 112 97 99 101 93 32 93}
     }
   box {{parent.shot_name.box.x} {parent.shot_name.box.y} {parent.shot_name.box.r} {parent.shot_name.box.t}}
   xjustify {{parent.x_justify}}
@@ -202,15 +202,13 @@ set N6fabc80 [stack 0]
   ypos -394
   disable {{parent.colorspace==0 x1018 1}}
  }
-push $N6fabc80
+push $N5a83590
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
   font_height_toolbar 100
   message "Format name: \[lrange \[split \[knob \[topnode parent.input0].format] ] 7 15]"
-  old_message {{70 111 114 109 97 116 32 110 97 109 101 58 32 84 79 70 70 32 83 88 84}
-    }
-  old_expression_markers {{13 20}
+  old_message {{70 111 114 109 97 116 32 110 97 109 101 58 32 91 108 114 97 110 103 101 32 91 115 112 108 105 116 32 91 107 110 111 98 32 91 116 111 112 110 111 100 101 32 112 97 114 101 110 116 46 105 110 112 117 116 48 93 46 102 111 114 109 97 116 93 32 93 32 55 32 49 53 93}
     }
   box {{parent.shot_name.box.x} {parent.shot_name.box.y} {parent.shot_name.box.r} {parent.shot_name.box.t}}
   xjustify {{parent.x_justify}}
@@ -244,13 +242,13 @@ push $N6fabc80
   ypos -394
   disable {{parent.format_name==0}}
  }
-push $N6f771e0
+push $N53fa080
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
   font_height_toolbar 100
   message "Format: \[value Crop_proxy.box.r] * \[value Crop_proxy.box.t]"
-  old_message {{70 111 114 109 97 116 58 32 51 49 54 56 32 42 32 49 55 56 50}
+  old_message {{70 111 114 109 97 116 58 32 49 57 50 48 32 42 32 49 48 56 48}
     }
   old_expression_markers {{8 11 15 18}
     }
@@ -285,7 +283,7 @@ push $N6f771e0
   xpos 2380
   ypos -394
  }
-push $N75540c0
+push $N57796b0
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -326,22 +324,22 @@ push $N75540c0
   xpos 2160
   ypos -394
  }
-push $N75f0d90
+push $N57809a0
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
   font_height_toolbar 100
   message "Input/timecode: \[metadata input/timecode]\n"
-  old_message {{73 110 112 117 116 47 116 105 109 101 99 111 100 101 58 32 49 55 58 53 53 58 48 55 58 49 53 10}
+  old_message {{73 110 112 117 116 47 116 105 109 101 99 111 100 101 58 32 10}
     }
-  old_expression_markers {{16 26}
+  old_expression_markers {{16 15}
     }
   box {{parent.shot_name.box.x} {parent.shot_name.box.y} {parent.shot_name.box.r} {parent.shot_name.box.t}}
   xjustify {{parent.x_justify}}
   yjustify {{parent.y_justify}}
   transforms {{0 2}
     }
-  font_size_values {{0 100 1 100 2 100 3 100 4 100 5 100 6 100 7 100 8 100 9 100 10 100 11 100 12 100 27 100}
+  font_size_values {{0 100 1 100 2 100 3 100 4 100 5 100 6 100 7 100 8 100 9 100 10 100 11 100 12 100 16 100}
     }
   global_font_scale {{parent.fontsize/100}}
   center {1920 1080}
@@ -366,15 +364,13 @@ push $N75f0d90
   xpos 1940
   ypos -394
  }
-push $N7420a00
+push $N58e63c0
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
   font_height_toolbar 100
   message "File extension: \[file extension \[knob \[topnode parent.input0].file]]"
-  old_message {{70 105 108 101 32 101 120 116 101 110 115 105 111 110 58 32 46 101 120 114}
-    }
-  old_expression_markers {{16 19}
+  old_message {{70 105 108 101 32 101 120 116 101 110 115 105 111 110 58 32 91 102 105 108 101 32 101 120 116 101 110 115 105 111 110 32 91 107 110 111 98 32 91 116 111 112 110 111 100 101 32 112 97 114 101 110 116 46 105 110 112 117 116 48 93 46 102 105 108 101 93 93}
     }
   box {{parent.shot_name.box.x} {parent.shot_name.box.y} {parent.shot_name.box.r} {parent.shot_name.box.t}}
   xjustify {{parent.x_justify}}
@@ -407,22 +403,20 @@ push $N7420a00
   xpos 1720
   ypos -394
  }
-push $N7397790
+push $N57874e0
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
   font_height_toolbar 100
   message "File name: \[file tail \[knob \[topnode parent.input0].file]]\n"
-  old_message {{70 105 108 101 32 110 97 109 101 58 32 84 71 95 71 70 88 95 48 50 54 48 95 99 111 109 112 95 118 48 48 57 46 37 48 52 100 46 101 120 114 10}
-    }
-  old_expression_markers {{11 40}
+  old_message {{70 105 108 101 32 110 97 109 101 58 32 91 102 105 108 101 32 116 97 105 108 32 91 107 110 111 98 32 91 116 111 112 110 111 100 101 32 112 97 114 101 110 116 46 105 110 112 117 116 48 93 46 102 105 108 101 93 93 10}
     }
   box {{parent.shot_name.box.x} {parent.shot_name.box.y} {parent.shot_name.box.r} {parent.shot_name.box.t}}
   xjustify {{parent.x_justify}}
   yjustify {{parent.y_justify}}
   transforms {{0 2}
     }
-  font_size_values {{0 100 41 100}
+  font_size_values {{0 100 58 100}
     }
   cursor_position 37
   global_font_scale {{parent.fontsize/100}}
@@ -448,22 +442,20 @@ push $N7397790
   xpos 1500
   ypos -394
  }
-push $N7601af0
+push $N5ac83b0
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
   font_height_toolbar 100
   message "Version: \[lindex \[split \[lindex \[split \[lindex \[split \[value \[topnode parent.input0].file] /] end] _] end] .] 0]\n "
-  old_message {{86 101 114 115 105 111 110 58 32 118 48 48 57 10 32}
-    }
-  old_expression_markers {{9 12}
+  old_message {{86 101 114 115 105 111 110 58 32 91 108 105 110 100 101 120 32 91 115 112 108 105 116 32 91 108 105 110 100 101 120 32 91 115 112 108 105 116 32 91 108 105 110 100 101 120 32 91 115 112 108 105 116 32 91 118 97 108 117 101 32 91 116 111 112 110 111 100 101 32 112 97 114 101 110 116 46 105 110 112 117 116 48 93 46 102 105 108 101 93 32 47 93 32 101 110 100 93 32 95 93 32 101 110 100 93 32 46 93 32 48 93 10 32}
     }
   box {{parent.shot_name.box.x} {parent.shot_name.box.y} {parent.shot_name.box.r} {parent.shot_name.box.t}}
   xjustify {{parent.x_justify}}
   yjustify {{parent.y_justify}}
   transforms {{0 2}
     }
-  font_size_values {{0 100 1 100 2 100 3 100 4 100 5 100 6 100 7 100 8 100 9 100 10 100 11 100 13 100}
+  font_size_values {{0 100 1 100 2 100 3 100 4 100 5 100 6 100 7 100 8 100 9 100 10 100 11 100 112 100}
     }
   cursor_position 114
   global_font_scale {{parent.fontsize/100}}
@@ -490,15 +482,13 @@ push $N7601af0
   ypos -394
  }
 push 0
-push $N742b1c0
+push $N5aca2c0
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
   font_height_toolbar 100
   message "Frame Range: \[value \[topnode parent.input0].first] - \[value \[topnode parent.input0].last]"
-  old_message {{70 114 97 109 101 32 82 97 110 103 101 58 32 49 48 48 49 32 45 32 49 51 53 49}
-    }
-  old_expression_markers {{13 16 20 23}
+  old_message {{70 114 97 109 101 32 82 97 110 103 101 58 32 91 118 97 108 117 101 32 91 116 111 112 110 111 100 101 32 112 97 114 101 110 116 46 105 110 112 117 116 48 93 46 102 105 114 115 116 93 32 45 32 91 118 97 108 117 101 32 91 116 111 112 110 111 100 101 32 112 97 114 101 110 116 46 105 110 112 117 116 48 93 46 108 97 115 116 93}
     }
   box {{parent.shot_name.box.x} {parent.shot_name.box.y} {parent.shot_name.box.r} {parent.shot_name.box.t}}
   xjustify {{parent.x_justify}}
@@ -530,15 +520,15 @@ push $N742b1c0
   xpos 1060
   ypos -394
  }
-push $N7433b00
+push $N5777770
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
   font_height_toolbar 100
   message "Shot name: \[lrange \[split \[file tail \[knob \[topnode parent.input0].file]] _ ] 0 \[value shot_n_number] ]"
-  old_message {{83 104 111 116 32 110 97 109 101 58 32 84 71 32 71 70 88 32 48 50 54 48}
+  old_message {{83 104 111 116 32 110 97 109 101 58 32 91 108 114 97 110 103 101 32 91 115 112 108 105 116 32 91 102 105 108 101 32 116 97 105 108 32 91 107 110 111 98 32 91 116 111 112 110 111 100 101 32 112 97 114 101 110 116 46 105 110 112 117 116 48 93 46 102 105 108 101 93 93 32 95 32 93 32 48 32 50 32 93}
     }
-  old_expression_markers {{11 21}
+  old_expression_markers {{80 80}
     }
   box {{input.format.x+(input.format.r*.02)} {"input.format.y + (input.format.t*.02)"} {input.format.r-(input.format.r*.02)} {input.format.t-(input.format.t*.02)}}
   xjustify {{parent.x_justify}}
@@ -576,7 +566,7 @@ push $N7433b00
   xpos 840
   ypos -10
  }
-set N774cc80 [stack 0]
+set N55f5170 [stack 0]
  Constant {
   inputs 0
   channels rgb
@@ -606,7 +596,7 @@ set N774cc80 [stack 0]
   xpos 840
   ypos 926
  }
-push $N774cc80
+push $N55f5170
  Dot {
   name Dot10
   xpos 764
@@ -625,7 +615,7 @@ push $N774cc80
   xpos 730
   ypos 320
  }
-push $N774cc80
+push $N55f5170
  Dot {
   name Dot11
   xpos 1314
@@ -685,7 +675,7 @@ push $N774cc80
   xpos 730
   ypos 422
  }
-push $N96d82b40
+push $N53fd5e0
  Merge2 {
   inputs 2
   name Merge_shadow
@@ -705,14 +695,14 @@ push $N96d82b40
   xpos 400
   ypos 974
  }
-set N7052ec0 [stack 0]
-push $N7384410
+set N56cbea0 [stack 0]
+push $N584d0d0
  Dot {
   name Dot12
   xpos 214
   ypos 762
  }
-set N7060e80 [stack 0]
+set N56d9900 [stack 0]
  Dot {
   name Dot13
   xpos -6
@@ -725,7 +715,7 @@ set N7060e80 [stack 0]
   xpos -40
   ypos 998
  }
-push $N7052ec0
+push $N56cbea0
  Shuffle {
   alpha black
   name Shuffle2
@@ -741,9 +731,9 @@ push $N7052ec0
   xpos 70
   ypos 1136
  }
-push $N7052ec0
-push $N7052ec0
-push $N7060e80
+push $N56cbea0
+push $N56cbea0
+push $N56d9900
  Merge2 {
   inputs 2
   name Merge_all
