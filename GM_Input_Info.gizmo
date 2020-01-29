@@ -1,10 +1,9 @@
 Group {
  name GM_Input_Info
  tile_color 0xff9455ff
- selected true
- xpos -590
- ypos -394
  addUserKnob {20 User}
+ addUserKnob {41 text_pos l "Text Position" T proxy.text_pos}
+ addUserKnob {26 ""}
  addUserKnob {6 shotname l "Shot Name" +STARTLINE}
  shotname true
  addUserKnob {3 shot_n_number l "Shot Name Parts"}
@@ -38,15 +37,13 @@ Group {
  addUserKnob {20 edit_text l "Edit Text" n 1}
  edit_text 0
  addUserKnob {7 fontsize l "Font Size" R 1 200}
- fontsize 100
+ fontsize 60
  addUserKnob {41 color l "Text Color" T TextColor.color}
- addUserKnob {4 x_justify l justify M {left center right justify ""}}
- x_justify right
- addUserKnob {4 y_justify l "" -STARTLINE M {top center bottom ""}}
  addUserKnob {41 translate_1 l translate T Transform_all.translate}
  addUserKnob {41 rotate T Transform_all.rotate}
  addUserKnob {41 scale T Transform_all.scale}
  addUserKnob {41 center T Transform_all.center}
+ addUserKnob {22 setcenter l "Set Center" -STARTLINE T "this_width = nuke.thisGroup().width()\n\nthis_height = nuke.thisGroup().height()\n\nnewWidth = this_width/2\nnewHeight = this_height/2\n\nnuke.thisGroup().knob(\"center\").setValue(\[newWidth, newHeight])"}
  addUserKnob {26 ""}
  addUserKnob {41 mix_2 l mix T Merge_text.mix}
  addUserKnob {20 endGroup_1 l endGroup n -1}
@@ -79,20 +76,20 @@ Group {
   xpos 214
   ypos -606
  }
-set N57744f0 [stack 0]
+set N962dea80 [stack 0]
  Crop {
   box {{input.format.x} {input.format.y} {input.format.r} {input.format.t}}
   name Crop_proxy
   xpos 1060
   ypos -610
  }
-push $N57744f0
+push $N962dea80
  Dot {
   name Dot1
   xpos 214
   ypos -486
  }
-set N584d0d0 [stack 0]
+set N962de380 [stack 0]
  Shuffle {
   red black
   green black
@@ -103,61 +100,61 @@ set N584d0d0 [stack 0]
   xpos 400
   ypos -496
  }
-set N53fd5e0 [stack 0]
+set N962de000 [stack 0]
  Dot {
   name Dot2
   xpos 874
   ypos -486
  }
-set N5777770 [stack 0]
+set Ndce43c00 [stack 0]
  Dot {
   name Dot3
   xpos 1094
   ypos -486
  }
-set N5aca2c0 [stack 0]
+set Ndce43880 [stack 0]
  Dot {
   name Dot4
   xpos 1314
   ypos -486
  }
-set N5ac83b0 [stack 0]
+set Ndce43500 [stack 0]
  Dot {
   name Dot9
   xpos 1534
   ypos -486
  }
-set N57874e0 [stack 0]
+set Ndce43180 [stack 0]
  Dot {
   name Dot7
   xpos 1754
   ypos -486
  }
-set N58e63c0 [stack 0]
+set Ndce42e00 [stack 0]
  Dot {
   name Dot5
   xpos 1974
   ypos -486
  }
-set N57809a0 [stack 0]
+set Ndce42a80 [stack 0]
  Dot {
   name Dot6
   xpos 2194
   ypos -486
  }
-set N57796b0 [stack 0]
+set Ndce42700 [stack 0]
  Dot {
   name Dot14
   xpos 2414
   ypos -486
  }
-set N53fa080 [stack 0]
+set Ndce42380 [stack 0]
  Dot {
   name Dot15
   xpos 2634
   ypos -486
  }
-set N5a83590 [stack 0]
+set Ndce42000 [stack 0]
  Dot {
   name Dot16
   xpos 2854
@@ -171,8 +168,8 @@ set N5a83590 [stack 0]
   old_message {{67 111 108 111 114 115 112 97 99 101 58 32 32 91 115 112 108 105 116 32 91 107 110 111 98 32 91 116 111 112 110 111 100 101 32 112 97 114 101 110 116 46 105 110 112 117 116 48 93 46 99 111 108 111 114 115 112 97 99 101 93 32 93}
     }
   box {{parent.shot_name.box.x} {parent.shot_name.box.y} {parent.shot_name.box.r} {parent.shot_name.box.t}}
-  xjustify {{parent.x_justify}}
-  yjustify {{parent.y_justify}}
+  xjustify {{"proxy.text_pos == 0 || proxy.text_pos == 2 ? 0 :2"}}
+  yjustify {{"proxy.text_pos == 2 || proxy.text_pos == 3 ? 2 :0"}}
   transforms {{0 2}
     }
   font_size_values {{0 100 11 100}
@@ -202,7 +199,7 @@ set N5a83590 [stack 0]
   ypos -394
   disable {{parent.colorspace==0 x1018 1}}
  }
-push $N5a83590
+push $Ndce42000
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -211,8 +208,8 @@ push $N5a83590
   old_message {{70 111 114 109 97 116 32 110 97 109 101 58 32 91 108 114 97 110 103 101 32 91 115 112 108 105 116 32 91 107 110 111 98 32 91 116 111 112 110 111 100 101 32 112 97 114 101 110 116 46 105 110 112 117 116 48 93 46 102 111 114 109 97 116 93 32 93 32 55 32 49 53 93}
     }
   box {{parent.shot_name.box.x} {parent.shot_name.box.y} {parent.shot_name.box.r} {parent.shot_name.box.t}}
-  xjustify {{parent.x_justify}}
-  yjustify {{parent.y_justify}}
+  xjustify {{"proxy.text_pos == 0 || proxy.text_pos == 2 ? 0 :2"}}
+  yjustify {{"proxy.text_pos == 2 || proxy.text_pos == 3 ? 2 :0"}}
   transforms {{0 2}
     }
   font_size_values {{0 100 12 100}
@@ -242,7 +239,7 @@ push $N5a83590
   ypos -394
   disable {{parent.format_name==0}}
  }
-push $N53fa080
+push $Ndce42380
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -253,8 +250,8 @@ push $N53fa080
   old_expression_markers {{8 11 15 18}
     }
   box {{parent.shot_name.box.x} {parent.shot_name.box.y} {parent.shot_name.box.r} {parent.shot_name.box.t}}
-  xjustify {{parent.x_justify}}
-  yjustify {{parent.y_justify}}
+  xjustify {{"proxy.text_pos == 0 || proxy.text_pos == 2 ? 0 :2"}}
+  yjustify {{"proxy.text_pos == 2 || proxy.text_pos == 3 ? 2 :0"}}
   transforms {{0 2}
     }
   font_size_values {{0 100 6 100 7 100}
@@ -283,22 +280,22 @@ push $N53fa080
   xpos 2380
   ypos -394
  }
-push $N57796b0
+push $Ndce42700
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
   font_height_toolbar 100
   message "Frame number: \[value frame]\n"
-  old_message {{70 114 97 109 101 32 110 117 109 98 101 114 58 32 49 48 49 56 10}
+  old_message {{70 114 97 109 101 32 110 117 109 98 101 114 58 32 49 51 10}
     }
-  old_expression_markers {{14 17}
+  old_expression_markers {{14 15}
     }
   box {{parent.shot_name.box.x} {parent.shot_name.box.y} {parent.shot_name.box.r} {parent.shot_name.box.t}}
-  xjustify {{parent.x_justify}}
-  yjustify {{parent.y_justify}}
+  xjustify {{"proxy.text_pos == 0 || proxy.text_pos == 2 ? 0 :2"}}
+  yjustify {{"proxy.text_pos == 2 || proxy.text_pos == 3 ? 2 :0"}}
   transforms {{0 2}
     }
-  font_size_values {{0 100 1 100 2 100 3 100 4 100 12 100 13 100 18 100}
+  font_size_values {{0 100 1 100 2 100 3 100 4 100 12 100 13 100 16 100}
     }
   cursor_position 12
   global_font_scale {{parent.fontsize/100}}
@@ -324,7 +321,7 @@ push $N57796b0
   xpos 2160
   ypos -394
  }
-push $N57809a0
+push $Ndce42a80
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -335,8 +332,8 @@ push $N57809a0
   old_expression_markers {{16 15}
     }
   box {{parent.shot_name.box.x} {parent.shot_name.box.y} {parent.shot_name.box.r} {parent.shot_name.box.t}}
-  xjustify {{parent.x_justify}}
-  yjustify {{parent.y_justify}}
+  xjustify {{"proxy.text_pos == 0 || proxy.text_pos == 2 ? 0 :2"}}
+  yjustify {{"proxy.text_pos == 2 || proxy.text_pos == 3 ? 2 :0"}}
   transforms {{0 2}
     }
   font_size_values {{0 100 1 100 2 100 3 100 4 100 5 100 6 100 7 100 8 100 9 100 10 100 11 100 12 100 16 100}
@@ -364,7 +361,7 @@ push $N57809a0
   xpos 1940
   ypos -394
  }
-push $N58e63c0
+push $Ndce42e00
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -373,8 +370,8 @@ push $N58e63c0
   old_message {{70 105 108 101 32 101 120 116 101 110 115 105 111 110 58 32 91 102 105 108 101 32 101 120 116 101 110 115 105 111 110 32 91 107 110 111 98 32 91 116 111 112 110 111 100 101 32 112 97 114 101 110 116 46 105 110 112 117 116 48 93 46 102 105 108 101 93 93}
     }
   box {{parent.shot_name.box.x} {parent.shot_name.box.y} {parent.shot_name.box.r} {parent.shot_name.box.t}}
-  xjustify {{parent.x_justify}}
-  yjustify {{parent.y_justify}}
+  xjustify {{"proxy.text_pos == 0 || proxy.text_pos == 2 ? 0 :2"}}
+  yjustify {{"proxy.text_pos == 2 || proxy.text_pos == 3 ? 2 :0"}}
   transforms {{0 2}
     }
   font_size_values {{0 100}
@@ -403,7 +400,7 @@ push $N58e63c0
   xpos 1720
   ypos -394
  }
-push $N57874e0
+push $Ndce43180
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -412,8 +409,8 @@ push $N57874e0
   old_message {{70 105 108 101 32 110 97 109 101 58 32 91 102 105 108 101 32 116 97 105 108 32 91 107 110 111 98 32 91 116 111 112 110 111 100 101 32 112 97 114 101 110 116 46 105 110 112 117 116 48 93 46 102 105 108 101 93 93 10}
     }
   box {{parent.shot_name.box.x} {parent.shot_name.box.y} {parent.shot_name.box.r} {parent.shot_name.box.t}}
-  xjustify {{parent.x_justify}}
-  yjustify {{parent.y_justify}}
+  xjustify {{"proxy.text_pos == 0 || proxy.text_pos == 2 ? 0 :2"}}
+  yjustify {{"proxy.text_pos == 2 || proxy.text_pos == 3 ? 2 :0"}}
   transforms {{0 2}
     }
   font_size_values {{0 100 58 100}
@@ -442,22 +439,22 @@ push $N57874e0
   xpos 1500
   ypos -394
  }
-push $N5ac83b0
+push $Ndce43500
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
   font_height_toolbar 100
-  message "Version: \[lindex \[split \[lindex \[split \[lindex \[split \[value \[topnode parent.input0].file] /] end] _] end] .] 0]\n "
-  old_message {{86 101 114 115 105 111 110 58 32 91 108 105 110 100 101 120 32 91 115 112 108 105 116 32 91 108 105 110 100 101 120 32 91 115 112 108 105 116 32 91 108 105 110 100 101 120 32 91 115 112 108 105 116 32 91 118 97 108 117 101 32 91 116 111 112 110 111 100 101 32 112 97 114 101 110 116 46 105 110 112 117 116 48 93 46 102 105 108 101 93 32 47 93 32 101 110 100 93 32 95 93 32 101 110 100 93 32 46 93 32 48 93 10 32}
+  message "Version: \[lindex \[split \[lindex \[split \[lindex \[split \[value \[topnode parent.input0].file] /] end] _] end] .] 0]"
+  old_message {{86 101 114 115 105 111 110 58 32 91 108 105 110 100 101 120 32 91 115 112 108 105 116 32 91 108 105 110 100 101 120 32 91 115 112 108 105 116 32 91 108 105 110 100 101 120 32 91 115 112 108 105 116 32 91 118 97 108 117 101 32 91 116 111 112 110 111 100 101 32 112 97 114 101 110 116 46 105 110 112 117 116 48 93 46 102 105 108 101 93 32 47 93 32 101 110 100 93 32 95 93 32 101 110 100 93 32 46 93 32 48 93}
     }
   box {{parent.shot_name.box.x} {parent.shot_name.box.y} {parent.shot_name.box.r} {parent.shot_name.box.t}}
-  xjustify {{parent.x_justify}}
-  yjustify {{parent.y_justify}}
+  xjustify {{"proxy.text_pos == 0 || proxy.text_pos == 2 ? 0 :2"}}
+  yjustify {{"proxy.text_pos == 2 || proxy.text_pos == 3 ? 2 :0"}}
   transforms {{0 2}
     }
-  font_size_values {{0 100 1 100 2 100 3 100 4 100 5 100 6 100 7 100 8 100 9 100 10 100 11 100 112 100}
+  font_size_values {{0 100 1 100 2 100 3 100 4 100 5 100 6 100 7 100 8 100 9 100 10 100 11 100}
     }
-  cursor_position 114
+  cursor_position 112
   global_font_scale {{parent.fontsize/100}}
   center {1920 1080}
   cursor_initialised true
@@ -475,14 +472,14 @@ push $N5ac83b0
   disable {{parent.versio==0}}
  }
  Transform {
-  translate {0 {"(shot_name.disable==1 ? 0:-(parent.fontsize))\n+\nproxy.gap\n+\n(frame_range.disable==1 ? 0:-(parent.fontsize))\n+\nproxy.gap"}}
+  translate {0 {"(shot_name.disable==1 ? 0:-(parent.fontsize))\n+\nproxy.gap\n+\n(frame_range.disable==1 ? 0:-(parent.fontsize))\n+\nproxy.gap\n\n"}}
   center {1920 1080}
   name Transform_version
   xpos 1280
   ypos -394
  }
 push 0
-push $N5aca2c0
+push $Ndce43880
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -491,8 +488,8 @@ push $N5aca2c0
   old_message {{70 114 97 109 101 32 82 97 110 103 101 58 32 91 118 97 108 117 101 32 91 116 111 112 110 111 100 101 32 112 97 114 101 110 116 46 105 110 112 117 116 48 93 46 102 105 114 115 116 93 32 45 32 91 118 97 108 117 101 32 91 116 111 112 110 111 100 101 32 112 97 114 101 110 116 46 105 110 112 117 116 48 93 46 108 97 115 116 93}
     }
   box {{parent.shot_name.box.x} {parent.shot_name.box.y} {parent.shot_name.box.r} {parent.shot_name.box.t}}
-  xjustify {{parent.x_justify}}
-  yjustify {{parent.y_justify}}
+  xjustify {{"proxy.text_pos == 0 || proxy.text_pos == 2 ? 0 :2"}}
+  yjustify {{"proxy.text_pos == 2 || proxy.text_pos == 3 ? 2 :0"}}
   transforms {{0 2}
     }
   cursor_position 89
@@ -520,7 +517,7 @@ push $N5aca2c0
   xpos 1060
   ypos -394
  }
-push $N5777770
+push $Ndce43c00
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -531,8 +528,8 @@ push $N5777770
   old_expression_markers {{80 80}
     }
   box {{input.format.x+(input.format.r*.02)} {"input.format.y + (input.format.t*.02)"} {input.format.r-(input.format.r*.02)} {input.format.t-(input.format.t*.02)}}
-  xjustify {{parent.x_justify}}
-  yjustify {{parent.y_justify}}
+  xjustify {{"proxy.text_pos == 0 || proxy.text_pos == 2 ? 0 :2"}}
+  yjustify {{"proxy.text_pos == 2 || proxy.text_pos == 3 ? 2 :0"}}
   transforms {{0 2}
     }
   font_size_values {{0 100 1 100 2 100 3 100 4 100 5 100 6 100 7 100 8 100 9 100 10 100 0 {curve x1018 114} 1 114 2 110 3 110 4 110 5 110 6 110 7 110 8 110 9 110 10 110}
@@ -560,20 +557,28 @@ push $N5777770
   xpos 840
   ypos -106
  }
+ Transform {
+  translate {0 {"proxy.text_pos < 2 ? 0 :(-Transform_colorspace.translate.y)"}}
+  center {960 540}
+  shutteroffset centred
+  name Transform1
+  xpos 840
+  ypos -58
+ }
  Crop {
   box {{parent.Crop_proxy.box.x} {parent.Crop_proxy.box.y} {parent.Crop_proxy.box.r} {parent.Crop_proxy.box.t}}
   name Crop_TEXT
   xpos 840
   ypos -10
  }
-set N55f5170 [stack 0]
+set N60152a80 [stack 0]
  Constant {
   inputs 0
   channels rgb
   color 1
   name TextColor
   xpos 1060
-  ypos 566
+  ypos 567
  }
  Crop {
   box {{parent.Crop_proxy.box.x} {parent.Crop_proxy.box.y} {parent.Crop_proxy.box.r} {parent.Crop_proxy.box.t}}
@@ -596,7 +601,7 @@ set N55f5170 [stack 0]
   xpos 840
   ypos 926
  }
-push $N55f5170
+push $N60152a80
  Dot {
   name Dot10
   xpos 764
@@ -615,7 +620,7 @@ push $N55f5170
   xpos 730
   ypos 320
  }
-push $N55f5170
+push $N60152a80
  Dot {
   name Dot11
   xpos 1314
@@ -645,7 +650,7 @@ push $N55f5170
   channels rgb
   name ShadowColor
   xpos 1500
-  ypos 110
+  ypos 111
  }
  Crop {
   box {{parent.Crop_proxy.box.x} {parent.Crop_proxy.box.y} {parent.Crop_proxy.box.r} {parent.Crop_proxy.box.t}}
@@ -675,7 +680,7 @@ push $N55f5170
   xpos 730
   ypos 422
  }
-push $N53fd5e0
+push $N962de000
  Merge2 {
   inputs 2
   name Merge_shadow
@@ -690,19 +695,19 @@ push $N53fd5e0
   ypos 926
  }
  Transform {
-  center {1584 891}
+  center {960 540}
   name Transform_all
   xpos 400
   ypos 974
  }
-set N56cbea0 [stack 0]
-push $N584d0d0
+set N5f4a0380 [stack 0]
+push $N962de380
  Dot {
   name Dot12
   xpos 214
   ypos 762
  }
-set N56d9900 [stack 0]
+set N5f4a0000 [stack 0]
  Dot {
   name Dot13
   xpos -6
@@ -715,7 +720,7 @@ set N56d9900 [stack 0]
   xpos -40
   ypos 998
  }
-push $N56cbea0
+push $N5f4a0380
  Shuffle {
   alpha black
   name Shuffle2
@@ -723,6 +728,7 @@ push $N56cbea0
   xpos 400
   ypos 1136
  }
+set N58f27500 [stack 0]
  Switch {
   inputs 2
   which {{parent.show_only_text.which==0}}
@@ -731,9 +737,9 @@ push $N56cbea0
   xpos 70
   ypos 1136
  }
-push $N56cbea0
-push $N56cbea0
-push $N56d9900
+push $N5f4a0380
+push $N5f4a0380
+push $N5f4a0000
  Merge2 {
   inputs 2
   name Merge_all
@@ -780,5 +786,15 @@ push $N56d9900
   addUserKnob {20 User}
   addUserKnob {7 gap l Gap R -200 200}
   gap {{-parent.spacing}}
+  addUserKnob {4 text_pos l "Text Position" M {"Top Left" "Top Right" "Bottom Left" "Bottom Right"}}
+  text_pos "Top Right"
+ }
+push $N58f27500
+ Viewer {
+  frame_range 1-264
+  name Viewer1
+  selected true
+  xpos 620
+  ypos 566
  }
 end_group
