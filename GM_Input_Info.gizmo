@@ -76,20 +76,20 @@ Group {
   xpos 214
   ypos -606
  }
-set N23a6cae0 [stack 0]
+set N5ebc0a80 [stack 0]
  Crop {
   box {{input.format.x} {input.format.y} {input.format.r} {input.format.t}}
   name Crop_proxy
   xpos 1060
   ypos -610
  }
-push $N23a6cae0
+push $N5ebc0a80
  Dot {
   name Dot1
   xpos 214
   ypos -486
  }
-set N2391fdf0 [stack 0]
+set N5ebc0380 [stack 0]
  Shuffle {
   red black
   green black
@@ -100,61 +100,61 @@ set N2391fdf0 [stack 0]
   xpos 400
   ypos -496
  }
-set N291af770 [stack 0]
+set N5ebc0000 [stack 0]
  Dot {
   name Dot2
   xpos 874
   ypos -486
  }
-set N2377df80 [stack 0]
+set N5ebc1c00 [stack 0]
  Dot {
   name Dot3
   xpos 1094
   ypos -486
  }
-set N2b924de0 [stack 0]
+set N5ebc1880 [stack 0]
  Dot {
   name Dot4
   xpos 1314
   ypos -486
  }
-set N2b929690 [stack 0]
+set N5ebe5c00 [stack 0]
  Dot {
   name Dot9
   xpos 1534
   ypos -486
  }
-set N2b92df40 [stack 0]
+set N5ebe5880 [stack 0]
  Dot {
   name Dot7
   xpos 1754
   ypos -486
  }
-set N2b932830 [stack 0]
+set N5ebe5500 [stack 0]
  Dot {
   name Dot5
   xpos 1974
   ypos -486
  }
-set N2b9370f0 [stack 0]
+set N5ebe5180 [stack 0]
  Dot {
   name Dot6
   xpos 2194
   ypos -486
  }
-set N2b93b9a0 [stack 0]
+set N5ebe4e00 [stack 0]
  Dot {
   name Dot14
   xpos 2414
   ypos -486
  }
-set N2b940250 [stack 0]
+set N5ebe4a80 [stack 0]
  Dot {
   name Dot15
   xpos 2634
   ypos -486
  }
-set N2b944b00 [stack 0]
+set N5ebe4700 [stack 0]
  Dot {
   name Dot16
   xpos 2854
@@ -199,7 +199,7 @@ set N2b944b00 [stack 0]
   ypos -394
   disable {{parent.colorspace==0 x1018 1}}
  }
-push $N2b944b00
+push $N5ebe4700
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -239,7 +239,7 @@ push $N2b944b00
   ypos -394
   disable {{parent.format_name==0}}
  }
-push $N2b940250
+push $N5ebe4a80
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -280,13 +280,13 @@ push $N2b940250
   xpos 2380
   ypos -394
  }
-push $N2b93b9a0
+push $N5ebe4e00
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
   font_height_toolbar 100
   message "Frame number: \[value frame]\n"
-  old_message {{70 114 97 109 101 32 110 117 109 98 101 114 58 32 49 48 50 48 10}
+  old_message {{70 114 97 109 101 32 110 117 109 98 101 114 58 32 49 48 57 48 10}
     }
   old_expression_markers {{14 17}
     }
@@ -321,7 +321,7 @@ push $N2b93b9a0
   xpos 2160
   ypos -394
  }
-push $N2b9370f0
+push $N5ebe5180
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -361,7 +361,7 @@ push $N2b9370f0
   xpos 1940
   ypos -394
  }
-push $N2b932830
+push $N5ebe5500
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -400,7 +400,7 @@ push $N2b932830
   xpos 1720
   ypos -394
  }
-push $N2b92df40
+push $N5ebe5880
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -439,7 +439,7 @@ push $N2b92df40
   xpos 1500
   ypos -394
  }
-push $N2b929690
+push $N5ebe5c00
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -479,7 +479,7 @@ push $N2b929690
   ypos -394
  }
 push 0
-push $N2b924de0
+push $N5ebc1880
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -517,7 +517,7 @@ push $N2b924de0
   xpos 1060
   ypos -394
  }
-push $N2377df80
+push $N5ebc1c00
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -546,6 +546,7 @@ push $N2377df80
   shadow_opacity 0.8
   shadow_angle 317
   name shot_name
+  selected true
   xpos 840
   ypos -442
   disable {{"parent.shotname == 0"}}
@@ -571,7 +572,7 @@ push $N2377df80
   xpos 840
   ypos -10
  }
-set N2bb37200 [stack 0]
+set N7eb7180 [stack 0]
  Constant {
   inputs 0
   channels rgb
@@ -601,7 +602,7 @@ set N2bb37200 [stack 0]
   xpos 840
   ypos 926
  }
-push $N2bb37200
+push $N7eb7180
  Dot {
   name Dot10
   xpos 764
@@ -620,7 +621,7 @@ push $N2bb37200
   xpos 730
   ypos 320
  }
-push $N2bb37200
+push $N7eb7180
  Dot {
   name Dot11
   xpos 1314
@@ -680,7 +681,7 @@ push $N2bb37200
   xpos 730
   ypos 422
  }
-push $N291af770
+push $N5ebc0000
  Merge2 {
   inputs 2
   name Merge_shadow
@@ -700,14 +701,14 @@ push $N291af770
   xpos 400
   ypos 974
  }
-set N2bc0ba30 [stack 0]
-push $N2391fdf0
+set N445ca80 [stack 0]
+push $N5ebc0380
  Dot {
   name Dot12
   xpos 214
   ypos 762
  }
-set N2bc19120 [stack 0]
+set N445c700 [stack 0]
  Dot {
   name Dot13
   xpos -6
@@ -718,14 +719,13 @@ set N2bc19120 [stack 0]
   output rgb
   name Merge_all_no_alpha
   xpos -40
-  ypos 998
+  ypos 974
  }
-push $N2bc0ba30
+push $N445ca80
  Shuffle {
   alpha black
   name Shuffle2
   label "\[value in 1]"
-  selected true
   xpos 400
   ypos 1136
  }
@@ -737,9 +737,9 @@ push $N2bc0ba30
   xpos 70
   ypos 1136
  }
-push $N2bc0ba30
-push $N2bc0ba30
-push $N2bc19120
+push $N445ca80
+push $N445ca80
+push $N445c700
  Merge2 {
   inputs 2
   name Merge_all
